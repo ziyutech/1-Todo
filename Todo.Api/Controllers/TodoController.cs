@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Todo.Api.Dto;
 using Todo.Api.Models;
 
 namespace Todo.Api.Controllers
@@ -68,9 +69,21 @@ namespace Todo.Api.Controllers
         /// <summary>
         /// 添加一个item
         /// </summary>
+        /// <param name="input">待办事项的所需数据</param>
         /// <returns></returns>
-        public ActionResult AddItem()
+        public ActionResult AddItem(AddItemInput input)
         {
+
+            todoContext.TodoItem.Add(new TodoItem() { 
+                Uid=Guid.NewGuid(),
+                Content=input.Content,
+                Ctime=DateTime.Now,
+                Etime=DateTime.Now,
+                Iscomplete=false,
+                ListUid=input.Uid
+            });
+            todoContext.SaveChanges();
+
             return Ok();
         }
         /// <summary>
