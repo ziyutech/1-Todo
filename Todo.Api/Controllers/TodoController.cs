@@ -28,7 +28,8 @@ namespace Todo.Api.Controllers
         /// <returns></returns>
         public ActionResult List()
         {
-            return Ok();
+            //显示所有todolist
+            return Ok(todoContext.TodoList.ToList());
         }
         
         /// <summary>
@@ -38,6 +39,15 @@ namespace Todo.Api.Controllers
         /// <returns></returns>
         public ActionResult AddList(string name)
         {
+            //添加一个todolist
+            todoContext.TodoList.Add(new TodoList() { 
+                Ctime=DateTime.Now,
+                Name=name,
+                Uid=Guid.NewGuid()
+            });
+            //将提交的数据库添加操作 提交到数据库
+            todoContext.SaveChanges();
+            //没有任何返回值表示添加成功
             return Ok();
         }
 
