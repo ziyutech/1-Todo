@@ -11,5 +11,6 @@ namespace Todo.Api.Models
         public DateTime Ctime { get; set; }
         public DateTime Etime { get; set; }
         public Guid ListUid { get; set; }
+        public string Content { get; set; }
     }
 }
