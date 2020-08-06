@@ -50,6 +50,31 @@ namespace Todo.Api.Controllers
             //没有任何返回值表示添加成功
             return Ok();
         }
-
+        /// <summary>
+        /// 列出uid为[uid]的todolist的详情
+        /// </summary>
+        /// <param name="uid">查询的uid</param>
+        /// <returns></returns>
+        public ActionResult ListDetail(Guid uid)
+        {
+            return Ok();
+        }
+        /// <summary>
+        /// 添加一个item
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddItem()
+        {
+            return Ok();
+        }
+        /// <summary>
+        /// 完成某个item
+        /// </summary>
+        /// <param name="Uid">item的uid</param>
+        /// <returns></returns>
+        public ActionResult Complte(Guid Uid)
+        {
+            return Ok();
+        }
     }
 }
