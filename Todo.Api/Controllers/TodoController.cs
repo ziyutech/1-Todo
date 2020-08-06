@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Todo.Api.Models;
 
 namespace Todo.Api.Controllers
 {
@@ -11,6 +12,16 @@ namespace Todo.Api.Controllers
     [ApiController]
     public class TodoController : ControllerBase
     {
+        // 依赖注入的写法
+        private readonly todoContext todoContext;
+        /// <summary>
+        /// 注入数据库对象实例
+        /// </summary>
+        /// <param name="_todoContext">数据库</param>
+        public TodoController(todoContext _todoContext)
+        {
+            todoContext = _todoContext; 
+        }
         /// <summary>
         /// 请求所有的todo 列表
         /// </summary>
@@ -29,5 +40,6 @@ namespace Todo.Api.Controllers
         {
             return Ok();
         }
+
     }
 }
