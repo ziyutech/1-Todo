@@ -80,6 +80,14 @@ namespace Todo.Api.Controllers
         /// <returns></returns>
         public ActionResult Complte(Guid Uid)
         {
+            var item = todoContext.TodoItem.FirstOrDefault(p => p.Uid == Uid);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            item.Iscomplete = true;
+            todoContext.SaveChanges();
+            //没有任何返回值表示添加成功
             return Ok();
         }
     }
