@@ -10,5 +10,6 @@ namespace Todo.Api.Models
         public bool Iscomplete { get; set; }
         public DateTime Ctime { get; set; }
         public DateTime Etime { get; set; }
+        public Guid ListUid { get; set; }
     }
 }

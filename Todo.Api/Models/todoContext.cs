@@ -47,6 +47,11 @@ namespace Todo.Api.Models
 
                 entity.Property(e => e.Iscomplete).HasColumnName("iscomplete");
 
+                entity.Property(e => e.ListUid)
+                    .HasColumnName("list_uid")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
                 entity.Property(e => e.Uid)
                     .HasColumnName("uid")
                     .HasCharSet("utf8mb4")
