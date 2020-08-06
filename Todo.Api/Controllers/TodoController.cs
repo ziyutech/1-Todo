@@ -57,7 +57,13 @@ namespace Todo.Api.Controllers
         /// <returns></returns>
         public ActionResult ListDetail(Guid uid)
         {
-            return Ok();
+            var detail = todoContext.TodoList.FirstOrDefault(p => p.Uid == uid);
+            if (detail == null)
+            {
+                return NotFound();
+            }
+            var list = todoContext.TodoItem.Where(p => p.ListUid == uid).ToList();
+            return Ok(new { detail=detail,list=list});
         }
         /// <summary>
         /// 添加一个item
